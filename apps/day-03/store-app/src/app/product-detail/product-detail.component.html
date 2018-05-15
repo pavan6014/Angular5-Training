@@ -1,0 +1,24 @@
+<!-- Product Detail -->
+<!-- Panel (Structure & Outline) -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ product.name | uppercase }}
+    </h3>
+  </div>
+  <div class="panel-body">
+    <p [ngStyle]="{'color': product.isAvailable ? 'green' : 'red' }">
+      {{ product.description }}
+    </p>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span class="label" [ngClass]="{'label-primary': product.isAvailable, 'label-warning': !product.isAvailable}">
+        {{ product.isAvailable ? 'Available' : 'Not Available' }}
+      </span>
+    </li>
+    <li class="list-group-item">
+      {{ product.price | currency : 'INR' }}
+    </li>
+  </ul>
+</div>

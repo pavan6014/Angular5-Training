@@ -1,0 +1,31 @@
+<!-- Products -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 appHighlight color="lightblue">Products</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-5">
+      <!-- Product Form -->
+      <app-product-form (productCreated)="onProductCreated($event)"></app-product-form>
+    </div>
+
+    <div class="col-sm-7">
+      <!-- Product List -->
+      <h3>Product List</h3>
+      <select class="form-control" [(ngModel)]="field">
+        <option value="0">Select search field</option>
+        <option value="name">Name</option>
+        <option value="description">Description</option>
+      </select>
+      <br>
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchText" />
+      <br>
+      <app-product-detail *ngFor="let p of products | searchProducts : searchText : field" [product]="p"></app-product-detail>
+    </div>
+  </div>
+</div>
+
+<!-- <button (click)="onSave()"></button> -->
